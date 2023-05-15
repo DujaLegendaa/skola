@@ -49,7 +49,8 @@ defmodule SkolaWeb.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:skola, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:earmark, "~> 1.4.37"}
     ]
   end
 
