@@ -41,7 +41,9 @@ defmodule Skola.MixProject do
       {:ecto_sqlite3, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"}
+      {:finch, "~> 0.13"},
+      {:earmark, "~> 1.4.37"},
+      {:file_system, "~> 0.2"}
     ]
   end
 
