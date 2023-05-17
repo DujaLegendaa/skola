@@ -1,13 +1,38 @@
 defmodule Skola.InfoExtract do
 
-  def get_metadata(file) do
-    %{size: size, mtime: mtime, ctime: ctime} = File.stat!(file)
-    %{size: size, write_time: mtime, change_time: ctime}
+  def extract_header(file) do
+    file
+    |> File.stream!()
+    #check if header start
+    |> Stream.take_while(&(String.trim(&1) != "-----HEADER END-----"))
+    |> Stream.map(&String.trim/1)
+    |> Enum.to_list()
+    |> Enum.drop(1)
   end
 
-  def hash(file) do
-    file
-    |> File.stream!([], 2048)
+  def parse_header_piece(info) do
+    [token | rest] = String.split(info) 
+    case token do
+      "Naziv:" ->
+        {:article_name, Enum.join(rest, " ")}
+      "Autor:" ->
+        [name, surname] = rest
+        {:author, %{name: name, surname: surname}}
+      "Vreme:" ->
+        {:time, Enum.at(rest, 0) |> DateTime.from_iso8601 |> elem(1)}
+    end
+  end
+  def reduce_h(x, acc) do
+    {field, val} = parse_header_piece(x)
+    Map.put(acc, field, val)
+  end
+
+  def extract_from_header(header) do
+    Enum.reduce(header, %{}, &reduce_h/2)
+  end
+
+  def hash(enumerable) do
+    enumerable
     |> Enum.reduce(:crypto.hash_init(:sha256), &(:crypto.hash_update(&2, &1)))
     |> :crypto.hash_final()
     |> Base.encode16()
@@ -21,46 +46,12 @@ defmodule Skola.InfoExtract do
     |> Enum.count()
   end
 
-  def extract(string, token, transform_fn, default) do
-    [n_token | rest] = String.trim(string) |> String.split(" ")
-    if token == n_token do
-      transform_fn.(rest)
-    else
-      default
-    end
-  end
-
-  # PROMENITI
-
-  def get_name(file) do
-    file
-    |> File.stream!()
-    |> Enum.at(0)
-    |> extract("Naziv:", &Enum.join(&1, " "), "Nova vest")
-  end
-
-  def get_author(file) do
-    file
-    |> File.stream!()
-    |> Enum.at(1)
-    |> extract("Autor:", fn x -> %{name: Enum.at(x, 0), surname: Enum.at(x, 1)} end, %{name: "N", surname: "N"})
-  end
-
-  def get_time(file) do
-    file 
-    |> File.stream!()
-    |> Enum.at(2)
-    |> extract("Vreme:", fn x -> x |> Enum.at(0) |> DateTime.from_iso8601 |> elem(1) end, DateTime.now!("Etc/UTC"))
-  end
-
-
   def extract_full(file_path) do
-    name = get_name(file_path)
-    time = get_time(file_path)
-    hash = hash(file_path)
-    author = get_author(file_path)
-    words = count_words(file_path)
-    %{name: name, date_time: time, hash: hash, author: author, words: words}
+    header = extract_header(file_path)
+
+    extract_from_header(file_path)
+    |> Map.put(:words, count_words(file_path))
+    |> Map.put(:header_hash, hash(header))
   end
 
 end

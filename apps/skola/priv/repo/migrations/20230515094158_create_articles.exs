@@ -3,7 +3,8 @@ defmodule Skola.Repo.Migrations.CreateArticles do
 
   def change do
     create table(:articles) do
-      add :hash, :string
+      add :name, :string
+      add :header_hash, :string
       add :date_time, :naive_datetime
       add :words, :integer
       add :path, :string

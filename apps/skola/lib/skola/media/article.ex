@@ -4,7 +4,7 @@ defmodule Skola.Media.Article do
 
   schema "articles" do
     field :name, :string
-    field :hash, :string
+    field :header_hash, :string
     field :words, :integer
     field :date_time, :naive_datetime
     field :path, :string
@@ -16,7 +16,7 @@ defmodule Skola.Media.Article do
   @doc false
   def changeset(article, attrs) do
     article
-    |> cast(attrs, [:name, :hash, :date_time, :words, :path])
-    |> validate_required([:name, :hash, :date_time, :words, :path])
+    |> cast(attrs, [:name, :header_hash, :date_time, :words, :path])
+    |> validate_required([:name, :header_hash, :date_time, :words, :path])
   end
 end

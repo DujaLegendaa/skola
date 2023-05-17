@@ -4,10 +4,7 @@ defmodule SkolaWeb.TestLive do
 
   def render(assigns) do
     ~H"""
-    <%= raw Earmark.as_html!(@text) %>
-    <.form for={@form} phx-submit="save">
-      <input type="text" name="text" />
-    </.form>
+    <%= raw File.read!("vesti/html/prva.html") %>
 """
   end
   def mount(_params, _, socket) do
