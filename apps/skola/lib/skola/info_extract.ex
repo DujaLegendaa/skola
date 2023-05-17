@@ -19,7 +19,7 @@ defmodule Skola.InfoExtract do
         [name, surname] = rest
         {:author, %{name: name, surname: surname}}
       "Vreme:" ->
-        {:time, Enum.at(rest, 0) |> DateTime.from_iso8601 |> elem(1)}
+        {:date_time, Enum.at(rest, 0) |> DateTime.from_iso8601 |> elem(1)}
     end
   end
   def reduce_h(x, acc) do
@@ -49,7 +49,7 @@ defmodule Skola.InfoExtract do
   def extract_full(file_path) do
     header = extract_header(file_path)
 
-    extract_from_header(file_path)
+    extract_from_header(header)
     |> Map.put(:words, count_words(file_path))
     |> Map.put(:header_hash, hash(header))
   end

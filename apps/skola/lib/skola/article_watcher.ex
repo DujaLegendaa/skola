@@ -13,27 +13,35 @@ defmodule Skola.ArticleWatcher do
 
   def handle_info({:file_event, watcher_pid, {path, events}}, %{watcher_pid: watcher_pid} = state) do
     for event <- events do
+      IO.inspect(event)
       case event do
         :closed -> 
-          on_close(path)
+          persist_article_info(path)
+          convert_and_write_html(path)
         _ -> path
       end
     end
     {:noreply, state}
   end
 
-  def on_close(path) do
-    IO.inspect("on close")
-    IO.inspect(path)
-    %{author: %{name: author_name, surname: surname}, date_time: dt, hash: hash, name: article_name, words: words} = Skola.InfoExtract.extract_full(path)  
-
-
+  def persist_article_info(path) do
+    %{author: %{name: author_name, surname: surname}, date_time: dt, header_hash: hash, article_name: article_name, words: words} = Skola.InfoExtract.extract_full(path)  
+    
     author = Skola.Media.get_or_create_author(author_name, surname)
 
-    Skola.Media.delete_article_by_path(path)
-    
-    Skola.Media.create_article(%{name: article_name, hash: hash, date_time: dt, words: words, path: path}, author)
+    case Skola.Media.get_article_by_path!(path) do
+      nil -> 
+        Skola.Media.create_article(%{name: article_name, header_hash: hash, date_time: dt, words: words, path: path}, author)
+      article -> 
+        %{header_hash: old_hash} = article
+        if old_hash != hash do
+          Skola.Media.delete_article(article)
+          Skola.Media.create_article(%{name: article_name, header_hash: hash, date_time: dt, words: words, path: path}, author)
+        end
+    end
+  end
 
+  def convert_and_write_html(path) do
     html = Skola.Converter.md_to_html(path)
 
     [base_folder, _, file_name] = Path.split(path) |> Enum.take(-3)

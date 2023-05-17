@@ -15,6 +15,7 @@ defmodule Skola.Media do
         Skola.Media.create_author(%{name: name, surname: surname})
       author -> {:ok, author}
     end
+    author
   end
 
   def create_author(attrs \\ %{}) do
