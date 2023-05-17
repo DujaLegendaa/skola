@@ -50,7 +50,7 @@ defmodule Skola.InfoExtract do
     file 
     |> File.stream!()
     |> Enum.at(2)
-    |> extract("Vreme:", &DateTime.from_iso8601/1, DateTime.now!("Etc/UTC"))
+    |> extract("Vreme:", fn x -> x |> Enum.at(0) |> DateTime.from_iso8601 |> elem(1) end, DateTime.now!("Etc/UTC"))
   end
 
 
