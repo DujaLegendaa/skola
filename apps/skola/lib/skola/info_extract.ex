@@ -27,8 +27,12 @@ defmodule Skola.InfoExtract do
     Map.put(acc, field, val)
   end
 
+  def default_header_vals() do
+    %{article_name: "Nova vest", author: %{name: "N", surname: "N"}, date_time: DateTime.now!("Etc/UTC") }
+  end
+
   def extract_from_header(header) do
-    Enum.reduce(header, %{}, &reduce_h/2)
+    Enum.reduce(header, default_header_vals(), &reduce_h/2)
   end
 
   def hash(enumerable) do
