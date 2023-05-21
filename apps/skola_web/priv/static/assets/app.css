@@ -876,13 +876,14 @@ select {
   margin: -0.75rem;
 }
 
-.m-5 {
-  margin: 1.25rem;
-}
-
 .-my-4 {
   margin-top: -1rem;
   margin-bottom: -1rem;
+}
+
+.mx-\[5em\] {
+  margin-left: 5em;
+  margin-right: 5em;
 }
 
 .my-3 {
@@ -895,24 +896,9 @@ select {
   margin-bottom: 10em;
 }
 
-.my-\[5em\] {
-  margin-top: 5em;
-  margin-bottom: 5em;
-}
-
-.mx-\[5em\] {
-  margin-left: 5em;
-  margin-right: 5em;
-}
-
 .my-\[2em\] {
   margin-top: 2em;
   margin-bottom: 2em;
-}
-
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .mb-\[4em\] {
@@ -979,16 +965,8 @@ select {
   margin-top: 5em;
 }
 
-.mt-\[10em\] {
-  margin-top: 10em;
-}
-
 .mt-\[7em\] {
   margin-top: 7em;
-}
-
-.mb-\[3em\] {
-  margin-bottom: 3em;
 }
 
 .block {
@@ -1051,12 +1029,20 @@ select {
   height: 400px;
 }
 
+.h-\[500px\] {
+  height: 500px;
+}
+
 .h-\[5em\] {
   height: 5em;
 }
 
 .h-\[600px\] {
   height: 600px;
+}
+
+.h-\[70px\] {
+  height: 70px;
 }
 
 .h-\[7em\] {
@@ -1071,32 +1057,8 @@ select {
   height: auto;
 }
 
-.h-\[100px\] {
-  height: 100px;
-}
-
-.h-\[50px\] {
-  height: 50px;
-}
-
-.h-\[70px\] {
-  height: 70px;
-}
-
-.h-\[1em\] {
-  height: 1em;
-}
-
-.h-\[10em\] {
-  height: 10em;
-}
-
-.h-\[300px\] {
-  height: 300px;
-}
-
-.h-\[500px\] {
-  height: 500px;
+.min-h-\[500px\] {
+  min-height: 500px;
 }
 
 .min-h-\[6rem\] {
@@ -1105,10 +1067,6 @@ select {
 
 .min-h-full {
   min-height: 100%;
-}
-
-.min-h-\[500px\] {
-  min-height: 500px;
 }
 
 .w-1\/4 {
@@ -1147,6 +1105,10 @@ select {
   width: 35%;
 }
 
+.w-\[350px\] {
+  width: 350px;
+}
+
 .w-\[40rem\] {
   width: 40rem;
 }
@@ -1175,26 +1137,6 @@ select {
   width: 100vw;
 }
 
-.w-\[200px\] {
-  width: 200px;
-}
-
-.w-\[400px\] {
-  width: 400px;
-}
-
-.w-\[300px\] {
-  width: 300px;
-}
-
-.w-\[350px\] {
-  width: 350px;
-}
-
-.w-\[500px\] {
-  width: 500px;
-}
-
 .max-w-3xl {
   max-width: 48rem;
 }
@@ -1205,10 +1147,6 @@ select {
 
 .grow {
   flex-grow: 1;
-}
-
-.basis-\[40\%\] {
-  flex-basis: 40%;
 }
 
 .basis-\[60\%\] {
@@ -1292,32 +1230,17 @@ select {
        column-gap: 1.25rem;
 }
 
+.gap-x-\[3em\] {
+  -moz-column-gap: 3em;
+       column-gap: 3em;
+}
+
 .gap-y-\[1em\] {
   row-gap: 1em;
 }
 
 .gap-y-\[2em\] {
   row-gap: 2em;
-}
-
-.gap-x-\[1em\] {
-  -moz-column-gap: 1em;
-       column-gap: 1em;
-}
-
-.gap-x-\[10em\] {
-  -moz-column-gap: 10em;
-       column-gap: 10em;
-}
-
-.gap-x-\[5em\] {
-  -moz-column-gap: 5em;
-       column-gap: 5em;
-}
-
-.gap-x-\[3em\] {
-  -moz-column-gap: 3em;
-       column-gap: 3em;
 }
 
 .space-y-8 > :not([hidden]) ~ :not([hidden]) {
@@ -1339,10 +1262,6 @@ select {
 
 .place-self-center {
   place-self: center;
-}
-
-.self-end {
-  align-self: flex-end;
 }
 
 .self-center {
@@ -1540,6 +1459,11 @@ select {
   padding-right: 2em;
 }
 
+.px-\[4em\] {
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1550,36 +1474,6 @@ select {
   padding-bottom: 1rem;
 }
 
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
-.px-\[3em\] {
-  padding-left: 3em;
-  padding-right: 3em;
-}
-
-.py-\[2em\] {
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-
-.px-\[5em\] {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-
-.px-\[4em\] {
-  padding-left: 4em;
-  padding-right: 4em;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1588,12 +1482,20 @@ select {
   padding-bottom: 1em;
 }
 
+.pb-\[3em\] {
+  padding-bottom: 3em;
+}
+
 .pl-5 {
   padding-left: 1.25rem;
 }
 
 .pl-\[20em\] {
   padding-left: 20em;
+}
+
+.pl-\[5em\] {
+  padding-left: 5em;
 }
 
 .pr-6 {
@@ -1608,24 +1510,8 @@ select {
   padding-top: 1.5em;
 }
 
-.pl-\[10em\] {
-  padding-left: 10em;
-}
-
-.pl-\[5em\] {
-  padding-left: 5em;
-}
-
 .pt-\[2em\] {
   padding-top: 2em;
-}
-
-.pb-\[2\.5em\] {
-  padding-bottom: 2.5em;
-}
-
-.pb-\[3em\] {
-  padding-bottom: 3em;
 }
 
 .text-left {
@@ -1667,6 +1553,10 @@ select {
   font-size: 2em;
 }
 
+.text-\[3\.5em\] {
+  font-size: 3.5em;
+}
+
 .text-\[4em\] {
   font-size: 4em;
 }
@@ -1684,27 +1574,6 @@ select {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
-
-.text-\[10em\] {
-  font-size: 10em;
-}
-
-.text-\[3em\] {
-  font-size: 3em;
-}
-
-.text-\[5em\] {
-  font-size: 5em;
-}
-
-.text-\[3\.5em\] {
-  font-size: 3.5em;
 }
 
 .font-bold {

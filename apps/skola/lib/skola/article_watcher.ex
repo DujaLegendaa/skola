@@ -54,10 +54,4 @@ defmodule Skola.ArticleWatcher do
   def convert_and_write_html(path) do
     File.write!(md_path_to_html(path), Skola.Converter.md_to_html(path), [:write])
   end
-
-
-  def handle_info({:file_event, watcher_pid, :stop}, %{watcher_pid: watcher_pid} = state) do
-    IO.inspect("ugasio sam ga")
-    {:noreply, state}
-  end
 end

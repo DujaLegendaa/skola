@@ -84,9 +84,9 @@ defmodule SkolaWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import SkolaWeb.CoreComponents
-
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
+
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())
