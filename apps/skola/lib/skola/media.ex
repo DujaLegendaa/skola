@@ -2,6 +2,7 @@ defmodule Skola.Media do
   alias Skola.Media.Author
   alias Skola.Media.Article
   alias Skola.Repo
+  import Ecto.Query
   def list_authors do
     Repo.all(Author)
   end
@@ -45,6 +46,15 @@ defmodule Skola.Media do
   end
 
   def get_article!(id), do: Repo.get!(Article, id)
+
+  def list_latest_articles(n) do
+    Repo.all(
+      from a in Article,
+        order_by: [desc: a.date_time],
+        limit: ^n
+    )
+    
+  end
 
   def get_article_by_path!(path), do: Repo.get_by(Article, path: path)
 

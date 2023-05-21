@@ -1608,10 +1608,6 @@ select {
   letter-spacing: 0.05em;
 }
 
-.tracking-widest {
-  letter-spacing: 0.1em;
-}
-
 .text-\[\#DC4C5D\] {
   --tw-text-opacity: 1;
   color: rgb(220 76 93 / var(--tw-text-opacity));

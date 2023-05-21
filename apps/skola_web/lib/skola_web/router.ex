@@ -17,11 +17,9 @@ defmodule SkolaWeb.Router do
   scope "/", SkolaWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", HomeLive
     live "/test", TestLive
-
     live "/vesti", VestiLive
-
     live "/vest", VestLive
   end
 

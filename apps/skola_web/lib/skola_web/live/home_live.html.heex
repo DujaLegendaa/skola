@@ -1,0 +1,50 @@
+<div class="mt-[5em] mb-[4em] relative flex content-around flex-col w-screen">
+    <img class="w-inherit h-auto z-[-10]" src="/images/Group 4.png">
+
+    <div class="absolute top-[15%] left-[15%] w-screen flex flex-col">
+        <div id="subheader" class="text-[4em] text-[#DC4C5D] font-bold tracking-wider
+        " >Želite da se <br> upišete?</div>
+        <div id="subtext" class="text-[1.5em] text-slate-800" >Kontaktirajte nas putem mejla</div>
+
+        <div id="emailpolje" class="flex left-[10%] mt-[5em] w-[35%] drop-shadow-md">
+            <input class="pl-5 text-2xl border-[1px] border-slate-400 grow rounded-l-lg" id="email" name="email" type="text" placeholder="korisnickoime@domain.com" >
+            <button type="submit" class="h-[2.5em] w-[6em] bg-red-500 hover:bg-red-600
+            text-gray-100 font-semibold tracking-wider text-2xl rounded-r-lg">POŠALJI</button>
+        </div>
+    </div>
+</div>
+
+    <!-- TRAKA BUDJ BADJ -->
+
+<div class="mt-[5em] mb-[5em] relative flex content-around flex-col w-screen my-[10em]">
+    <img class="w-inherit h-auto z-[-10]" src="/images/crvena traka.png">
+
+    <div class="absolute top-[15%] justify-center flex flex-col left-[37%] text-center gap-y-[2em] ">
+        <div  class="text-[2.5em] text-[#ffffff] font-bold tracking-wider w-auto ">
+            Ne zaboravite da pogledate raspored casova <br> za ovaj mesec :) </div>
+        <a href="https://raspored.rs/pub/?pid=6pll">
+            <button class="text-[2em] text-[#ffffff] w-[10em] h-[2em] border-2 rounded-md border-white" >Raspored casova</button>
+        </a>
+    </div>
+</div>
+
+
+    <!-- KARTICE -->
+
+<div class="flex w-screen h-[400px] justify-between px-10 my-[10em]">
+  <%= for article <- @four_articles do %>
+    <.article_card name={article.name} date={convert_date(article.date_time)} paragraph={extract_first_paragraph(article.path)} />
+  <% end %>
+</div>
+
+    <!-- OBLACIC -->
+
+<div class="mt-[5em] mb-[5em] relative flex w-screen">
+    <img class=" w-screen h-[600px] z-[-10]" src="/images/oblacic.png">
+
+    <div class="absolute h-[400px] w-[80%] flex w-inherit justify-between pl-[20em] pr-[5em]">
+        <div  class="text-[4em] text-[#ffffff] text-left font-bold tracking-wider w-auto place-self-center">
+            Pogledajte smerove <br> koje nudimo :) </div>
+        <button class="text-[#ffffff] p-[1em] w-[7em] h-[7em] border-4 rounded-lg flex  border-white place-self-center" ><Heroicons.LiveView.icon name="arrow-right" type="outline" class=" place-self-center h-[5em]" /></button>
+    </div>
+</div>
