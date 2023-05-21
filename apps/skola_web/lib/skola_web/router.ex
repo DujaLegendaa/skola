@@ -19,7 +19,12 @@ defmodule SkolaWeb.Router do
 
     get "/", PageController, :home
     live "/test", TestLive
+
+    live "/vesti", VestiLive
+
+    live "/vest", VestLive
   end
+
 
   # Other scopes may use custom stacks.
   # scope "/api", SkolaWeb do

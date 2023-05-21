@@ -26,3 +26,5 @@ erl_crash.dump
 *.db
 *.db-*
 
+node_modules
+
