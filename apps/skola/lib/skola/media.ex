@@ -53,7 +53,13 @@ defmodule Skola.Media do
         order_by: [desc: a.date_time],
         limit: ^n
     )
-    
+  end
+
+  def list_latest_articles() do
+    Repo.all(
+      from a in Article,
+        order_by: [desc: a.date_time]
+    )
   end
 
   def get_article_by_path!(path), do: Repo.get_by(Article, path: path)

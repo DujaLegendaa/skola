@@ -31,9 +31,9 @@
 
     <!-- KARTICE -->
 
-<div class="flex w-screen h-[400px] justify-between px-10 my-[10em]">
+<div class="grid grid-cols-4 gap-x-4 w-screen h-[400px] justify-between px-10 my-[10em]">
   <%= for article <- @four_articles do %>
-    <.article_card name={article.name} date={convert_date(article.date_time)} paragraph={extract_first_paragraph(article.path)} />
+<.article_card link={"/vest/#{article.id}"} name={article.name} date={convert_date(article.date_time)} paragraph={extract_first_paragraph(article.path)} />
   <% end %>
 </div>
 

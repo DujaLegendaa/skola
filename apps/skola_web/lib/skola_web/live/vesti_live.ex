@@ -3,7 +3,7 @@ defmodule SkolaWeb.VestiLive do
   use Phoenix.LiveView
 
   def mount(_params, _, socket) do
-    {:ok, assign_new(socket, :articles, fn -> Skola.Media.list_articles() end)}
+    {:ok, assign_new(socket, :articles, fn -> Skola.Media.list_latest_articles() end)}
   end
 
 end

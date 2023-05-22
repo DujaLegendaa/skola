@@ -20,7 +20,7 @@ defmodule SkolaWeb.Router do
     live "/", HomeLive
     live "/test", TestLive
     live "/vesti", VestiLive
-    live "/vest", VestLive
+    live "/vest/:id", VestLive
   end
 
 
